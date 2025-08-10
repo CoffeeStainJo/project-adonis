@@ -396,6 +396,28 @@ function WeightLossApp() {
 
   const labelStyle = { marginBottom: 6, fontWeight: "600" };
 
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      // Construct the correct path using Vite's base URL
+      const swUrl = `${import.meta.env.BASE_URL}sw.js`;
+      navigator.serviceWorker.register(swUrl)
+        .then(registration => {
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New content is available, notify user
+                if (confirm('New version available! Would you like to update?')) {
+                  window.location.reload();
+                }
+              }
+            });
+          });
+        })
+        .catch(error => console.log('Service worker registration failed:', error));
+    }
+  }, []);
+
   return (
     <>
       <ResponsiveStyles />
