@@ -129,6 +129,21 @@ const ResponsiveStyles = () => (
         height: 280px;
         margin-top: 15px;
       }
+      input[type="date"] {
+        /* Specific fixes for iOS date inputs */
+        -webkit-appearance: none;
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      /* Add padding adjustment for container */
+      .container {
+        padding: 15px 15px;  /* slightly increased side padding */
+      }
+      form.grid-form {
+        padding: 0 2px;  /* small padding to prevent edge bleeding */
+      }
     }
   `}</style>
 );
