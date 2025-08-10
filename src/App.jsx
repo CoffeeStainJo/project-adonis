@@ -114,10 +114,10 @@ const ResponsiveStyles = () => (
         gap: 12px;
       }
       input[type="number"],
-      input[type="date"] {
-        font-size: 14px;
-        padding: 8px 12px;
-      }
+      // input[type="date"] {
+      //   font-size: 14px;
+      //   padding: 8px 12px;
+      // }
       button.save-btn {
         font-size: 14px;
         padding: 10px 16px;
